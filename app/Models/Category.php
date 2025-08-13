@@ -2,12 +2,13 @@
 
 namespace App\Models;
 use DateTime;
-use StatusGoal;
-
+use App\Models\Enum\StatusGoal;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
+    protected $fillable = ['name'];
+
     private DateTime $prazo;
     private StatusGoal $statusGoal;
 
