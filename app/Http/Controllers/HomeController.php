@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,9 +17,10 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            return view('home');
+            $atividades = Activit::all();
+            return view('activities.index', compact('atividades'));
         }
 
-        return view('home');
+        return view('welcome');
     }
 }

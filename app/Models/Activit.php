@@ -3,30 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Activit extends Model
 {
-    private float $id;
-    private String $title;
+    protected $fillable = [
+        'descricao', 'status', 'data', 'category_id'
+    ];
 
-    function __contruct(float $id, String $title){
-        $this->id = $id;
-        $this->title = $title;
+    public function category(): BelongsTo{
+        return $this->belongsTo(Category::class);
     }
 
-    public function setId(float $id){
-        $this->id = $id;
-    }
-
-    public function setTitle(String $title){
-        $this->title = $title;
-    }
-
-    public function getId(){
-        return $this->id;
-    }
-
-    public function getTitle(){
-        return $this->title;
+    public function user(): BelongsTo{
+        return $this->belongsTo(User::class);
     }
 }
