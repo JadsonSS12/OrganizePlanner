@@ -11,10 +11,10 @@
                 <a class="btn btn-primary" href="{{route('atividades.create')}}">Criar atividade</a>
             </div>
         </div>
-        <div class="d-flex align-items-center gap-4 text-sm text-secondary">
-            <span class="gap-2"><span class="bg-alert rounded"></span> Manhã (08–12)</span>
-            <span class="gap-2"><span class="bg-primary rounded"></span> Tarde (13–17)</span>
-            <span class="gap-2"><span class="bg-success rounded"></span> Noite (18–22)</span>
+        <div class="d-flex justify-content-center gap-4 text-sm">
+            <span class="bg-info p-2 rounded"> Manhã (05–12)</span>
+            <span class="bg-warning p-2 rounded">Tarde (13–17)</span>
+            <span class="bg-dark text-white p-2 rounded"> Noite (18–22)</span>
         </div>
 
         <div class="row">
