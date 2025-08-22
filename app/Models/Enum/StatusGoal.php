@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Validation\Rules\Enum;
+namespace App\Models\Enum;
 
-Enum StatusGoal{
-    case NaoIniciada;
-    case Sucesso;
-    case SemSucesso;
-    case ParcialmenteAtingida;
+Enum StatusGoal: string{
+    case NaoIniciada = 'NaoIniciada';
+    case Sucesso = 'Sucesso';
+    case SemSucesso = 'SemSucesso';
+    case ParcialmenteAtingida = 'ParcialmenteAtingida';
 }
