@@ -21,13 +21,13 @@ class ActivitController extends Controller
     public function create(){
         return view('activities.create');
     }
-    public function store(Resquest $resquest){
+    public function store(Request $resquest){
 
     }
     public function edit($activit_id){
 
     }
-    public function update(Resquest $resquest, $activit_id){
+    public function update(Request $resquest, $activit_id){
 
     }
 

@@ -4,76 +4,90 @@ namespace App\Models;
 
 use DateTime;
 use Illuminate\Database\Eloquent\Model;
-use TypeRemember;
+use App\Models\Enum\TypeRemember;
+
 
 class Remember extends Model{
-    private float $id;
-    private String $title;
-    private String $description;
-    public TypeRemember $typeRemember;
-    private bool $semanal;
-    private DateTime $dateTime;
+    
+    protected $fillable = [
+        'title',
+        'description',
+        'typeRemember',
+        'semanal',
+        'dateTime'
+    ];
 
-    public function getId(){
-        return $this->id;
+    
+    protected $casts = [
+        'semanal' => 'boolean',
+        'dateTime' => 'datetime',
+        'typeRemember' => TypeRemember::class
+    ];
+
+
+    public $timestamps = false;
+
+    
+    public function getId(): int
+    {
+        return $this->attributes['id'];
     }
 
-    public function setId(float $id){
-        $this->id = $id;
+    public function getTitle(): string
+    {
+        return $this->attributes['title'];
     }
 
-    public function getTitle(){
-        return $this->title;
+    public function setTitle(string $title): void
+    {
+        $this->attributes['title'] = $title;
     }
 
-    public function setTitle(String $title){
-        $this->title = $title;
+    public function getDescription(): ?string
+    {
+        return $this->attributes['description'];
     }
 
-    public function getDescription(){
-        return $this->description;
+    public function setDescription(?string $description): void
+    {
+        $this->attributes['description'] = $description;
     }
 
-    public function setDescription(String $description){
-        $this->description = $description;
+    public function getTypeRemember(): TypeRemember
+    {
+        return $this->attributes['typeRemember'];
     }
 
-    public function getTypeRemember(){
-        return $this->typeRemember;
+    public function setTypeRemember(TypeRemember $typeRemember): void
+    {
+        $this->attributes['typeRemember'] = $typeRemember;
     }
 
-    public function setTypeRemember(TypeRemember $typeRemember){
-        $this->typeRemember = $typeRemember;
+    public function getSemanal(): bool
+    {
+        return $this->attributes['semanal'];
     }
 
-    public function getSemanal(){
-        return $this->semanal;
+    public function setSemanal(bool $semanal): void
+    {
+        $this->attributes['semanal'] = $semanal;
     }
 
-    public function getDateTime(){
-        return $this->dateTime;
+    public function getDateTime(): DateTime
+    {
+        return $this->attributes['dateTime'];
     }
 
-    public function setDateTime(DateTime $dateTime){
-        $this->dateTime = $dateTime;
+    public function setDateTime(DateTime $dateTime): void
+    {
+        $this->attributes['dateTime'] = $dateTime;
     }
 
-    public function setSemanal(bool $semanal){
-        $this->semanal = $semanal;
+    
+    public function semanalUpdate(): void
+    {
+        if ($this->getSemanal()) {
+            $this->setDateTime($this->getDateTime()->modify("+7 days"));
+        }
     }
-
-    public function __construct(float $id, String $title, String $description = "", bool $semanal, TypeRemember $typeRemember){
-        $this->id = $id;
-        $this->title = $title;
-        $this->description = $description;
-        $this->semanal = $semanal;
-        $this->typeRemember = $typeRemember;
-        $this->dateTime = new DateTime();
-    }
-
-   public function Semanal(){
-    if($this->getSemanal()){
-        $this->setDateTime($this->dateTime->modify("P7D"));
-    }
-   }
 }

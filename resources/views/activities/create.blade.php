@@ -51,8 +51,8 @@
                         </div>
 
                         <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-success px-4">
-                                <i class="bi bi-check2-circle me-1"></i> Salvar
+                            <button type="submit" class="btn btn-success px-4" href="{{ route('atividades.index') }}">
+                                <i class="bi bi-check2-circle me-1" ></i> Salvar
                             </button>
                         </div>
                     </form>

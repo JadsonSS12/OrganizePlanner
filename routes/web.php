@@ -4,6 +4,8 @@ use App\Http\Controllers\ActivitController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GoalController;
+use App\Http\Controllers\RememberController;
+use App\Http\Controllers\TesteController;
 
 Auth::routes();
 
@@ -11,3 +13,5 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::resource('atividades', ActivitController::class);
 Route::resource('goals', GoalController::class);
+Route::resource('remembers', RememberController::class);
+Route::resource('homes', RememberController::class);

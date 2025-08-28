@@ -21,7 +21,7 @@
 
 <style>
     .imagem-bg {
-    background-image: url('/images/neve.jpg');
+    background-image: url('public/images/neve.jpg');
     background-size: cover;
     background-position: center;
 }
