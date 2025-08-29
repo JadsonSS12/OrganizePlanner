@@ -18,16 +18,32 @@
         </div>
 
         <div class="row">
-            <div class="col-md-1 border-end">
-                @for ($h=0; $h<24; $h++)
-                  <div class="h-16 d-flex align-items-start justify-content-end">{{ str_pad($h,2,'0',STR_PAD_LEFT) }}:00</div>
-                @endfor
-            </div>
-            <div class="col-md-11">
-                @foreach($atividades as $atividade)
-                    <span>{{$atividade->descricao}}</span>
-                @endforeach
-            </div>
+        {{-- Coluna das horas --}}
+        <div class="col-md-1 border-end">
+            @for ($h = 0; $h < 24; $h++)
+                <div class="py-2 small text-end">
+                    {{ str_pad($h, 2, '0', STR_PAD_LEFT) }}:00
+                </div>
+            @endfor
+        </div>
+
+        {{-- Coluna das atividades --}}
+        <div class="col-md-11">
+            @for ($h = 0; $h < 24; $h++)
+                <div class="py-2 border-bottom" style="min-height: 36.5px;">
+                    @foreach ($atividades as $atividade)
+                        @php
+                            $startHour = (int) \Carbon\Carbon::parse($atividade->hora_inicio)->format('H');
+                        @endphp
+
+                        @if ($startHour === $h)
+                            <span class="badge bg-primary me-1">
+                                {{ $atividade->descricao }}
+                            </span>
+                        @endif
+                    @endforeach
+                </div>
+            @endfor
         </div>
     </div>
 

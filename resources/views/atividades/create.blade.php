@@ -47,7 +47,7 @@
 
                         <div class="mb-3" id="horario_field" style="display: none;">
                             <label for="horario" class="form-label">Horário</label>
-                            <input type="time" class="form-control" id="horario" name="horario">
+                            <input type="time" class="form-control" id="hora_inicio" name="hora_inicio">
                         </div>
 
                         <div class="mb-3" id="turno_field" style="display: none;">

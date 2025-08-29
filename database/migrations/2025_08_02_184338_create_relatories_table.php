@@ -11,8 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('relatories', function (Blueprint $table) {
+          Schema::create('relatories', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo');
+            $table->text('descricao')->nullable();
+            $table->date('data_inicio')->nullable();
+            $table->date('data_fim')->nullable();
+            $table->integer('quantidade')->default(0);
+            $table->decimal('valor_total', 10, 2)->default(0);
             $table->timestamps();
         });
     }

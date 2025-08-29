@@ -25,6 +25,15 @@ class Relatory extends Model
 
     
 
+    protected $fillable = [
+        'titulo',
+        'descricao',
+        'data_inicio',
+        'data_fim',
+        'quantidade',
+        'valor_total'
+    ];
+    
     public function getPeriodo(): DateTime {
         return $this->periodo;
     }
