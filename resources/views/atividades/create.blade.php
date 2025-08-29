@@ -14,6 +14,21 @@
                 <div class="card-body p-4">
                     <form action="{{ route('atividades.store') }}" method="POST">
                         @csrf
+                        <div class="mb-3">
+                            <label for="descricao" class="form-label">Descrição da Tarefa</label>
+                            <input type="text"  class="form-control" id="descricao" name="descricao"  placeholder="Descreva sua tarefa..." required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descricao" class="form-label">Categoria</label>
+                            <select class="form-control" name="category_id" id="category_id">
+                                <option value="" selected disabled>Selecione a categoria</option>
+                                @foreach ($categorias as $categoria)
+                                    <option value="{{$categoria->id}}" @selected(old('category_id') == $categoria->id)>{{$categoria->name}}</option>
+                                @endforeach
+
+                            </select>
+                        </div>
 
                         <div class="mb-3">
                             <label for="data" class="form-label">Data</label>
@@ -43,11 +58,6 @@
                                 <option value="tarde">Tarde</option>
                                 <option value="noite">Noite</option>
                             </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="descricao" class="form-label">Descrição da Tarefa</label>
-                            <textarea class="form-control" id="descricao" name="descricao" rows="3" placeholder="Descreva sua tarefa..." required></textarea>
                         </div>
 
                         <div class="d-flex justify-content-end">
