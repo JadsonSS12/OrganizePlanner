@@ -2,9 +2,10 @@
     .nav-item {
         margin: 10px;
         border-radius: 15px;
-        border: 1px solid transparent;
+        border: 1px solid;
         transition: all 0.3s ease;
         padding: 8px 12px;
+        color: white;
     }
 
     .nav-item:hover {
@@ -12,14 +13,19 @@
         border-color: none;
         color: white;
     }
+
+    .nav-item.active-nav-item {
+        background-color: #e6b450;
+        transition: all 0.3s ease;
+        color: #12583C; /* Cor do texto do item ativo */
+        border-radius: 15px;
+    }
 </style>
 
-<nav class="navbar navbar-expand-lg bg-white">
+<nav class="navbar navbar-expand-lg" style="background-color: #171719">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}" style="list-style:none;">
-            <span style="color: #12583C; font-weight: 800; font-size: 20px;">
-                OrganizeMe
-            </span>
+            <img src="{{ asset('images/organizeMe.jpg') }}" alt="Logo OrganizeMe" style="height: 40px; width: auto;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,16 +34,16 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link btn" href="#" aria-label="Acesse os relatórios">
+                    <a class="nav-link btn" href="#" aria-label="Acesse os relatórios" style="color: white">
                         Relatórios
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn" href="#" aria-label="Acesse os alertas">
+                    <a class="nav-link btn" href="#" aria-label="Acesse os alertas" style="color: white">
                         Alertas
                     </a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item active-nav-item">
                     <a class="nav-link btn" href="#" aria-label="Acesse a home">
                         Home
                     </a>
@@ -46,14 +52,14 @@
             <ul class="navbar-nav ms-auto">
                 @guest
                     @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <li class="nav-item" >
+                            <a class="nav-link" style="color: white" href="{{ route('login') }}">{{ __('Login') }} </a>
                         </li>
                     @endif
 
                     @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" style="color: white" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
                 @else

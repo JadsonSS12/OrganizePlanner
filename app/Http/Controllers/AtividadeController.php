@@ -3,16 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Atividade;
+use App\Models\Remember;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class AtividadeController extends Controller
 {
     public function index(){
-        $atividades = Atividade::where('user_id', Auth::user()->id)->get();
+         $atividades = Atividade::all();
+            
+            // Busca os lembretes para a data de hoje
+            $lembretesProximos = Remember::whereDate('dateTime', Carbon::today())->get();
 
-        return view('atividades.index', compact('atividades'));
+            // Passa tanto as atividades quanto os lembretes para a view
+            return view('atividades.index', compact('atividades', 'lembretesProximos'));
     }
     public function show($atividade_id){
         $atividade = Atividade::find($atividade_id);

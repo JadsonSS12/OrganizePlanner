@@ -19,17 +19,10 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
     @stack('css')
 
-<style>
-    .imagem-bg {
-    background-image: url('public/images/neve.jpg');
-    background-size: cover;
-    background-position: center;
-}
 
-</style>
 </head>
 
-<body class="d-flex flex-column min-vh-100" style="background-color: #F1F5F4;">
+<body class="d-flex flex-column min-vh-100" style="color: #fff">
 
 
     <header>
@@ -38,7 +31,7 @@
 
     {{-- @include('layouts.components.messages') --}}
 
-    <main class="flex-grow-1 my-5">
+    <main class="flex-grow-1" style="color: white; background-color: #000">
 
         @yield('content')
 

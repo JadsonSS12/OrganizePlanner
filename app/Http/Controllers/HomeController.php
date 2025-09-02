@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Atividade;
+use App\Models\Remember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -18,7 +20,11 @@ class HomeController extends Controller
     {
         if (Auth::check()) {
             $atividades = Atividade::all();
-            return view('atividades.index', compact('atividades'));
+             // Lógica para encontrar lembretes próximos
+            $lembretesProximos = Remember::whereDate('dateTime', Carbon::today())->get();
+
+            return view('home', compact('atividades', 'lembretesProximos'));
+            //return view('atividades.index', compact('atividades'));
         }
 
         return view('welcome');
