@@ -5,8 +5,8 @@ namespace App\Models\Enum;
 use Illuminate\Validation\Rules\Enum;
 
 Enum TypeRemember: string{
-     case Reunioes = 'Reunioes';
-    case LigacoesImportantes = 'LigacoesImportantes';
+     case Reunioes = 'Reuniões';
+    case LigacoesImportantes = 'Ligações Importantes';
     case Compras = 'Compras';
-    case Anotacoes = 'Anotacoes';
+    case Anotacoes = 'Anotações';
 }

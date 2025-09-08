@@ -37,14 +37,39 @@ class AtividadeController extends Controller
         return redirect()->route('atividades.index')->with('success', 'Atividade criada com sucesso!');
     }
     public function edit($atividade_id){
+        $atividade = Atividade::findOrFail($atividade_id);
+        return view('atividades.edit', compact('atividade'));
 
     }
-    public function update(Request $resquest, $atividade_id){
+    public function update(Request $request, $atividade_id){
+        $atividade = Atividade::findOrFail($atividade_id);
 
+        if(!$atividade){
+            return redirect()->back()->with("Atividade não encontrada");
+        }
+        $atividade->update([
+            'nome'=>$request->nome,
+            'descricao'=> $request->descricao,
+            'status'=> $request->status,
+            'data'=> $request->data,
+            'category_id'=>$request->data,
+            'user_id' => Auth::id(),
+            'hora_inicio'=>$request->hora_inicio,
+            'hora_fim'=>$request->hora_fim,
+
+        ]);
+        return redirect()->route('atividade.index')->with('success', 'Atividade atualizado com sucesso!');
     }
 
     public function destroy($atividade_id){
+        $atividade = Atividade::findOrFail($atividade_id);
 
+        if(!$atividade_id){
+            return redirect()->back()->with("Atividade não encontrada");
+        }
+
+        $atividade->delete();
+        return redirect()->route('atividade.index')->with("sucess", 'atividade deletada');
     }
 
 }

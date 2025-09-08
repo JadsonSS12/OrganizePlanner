@@ -18,3 +18,4 @@ Route::resource('homes', RememberController::class);
 
 Route::apiResource('relatories', RelatoryController::class);
 Route::get('relatories-chart', [RelatoryController::class, 'chartData']);
+Route::delete('/remembers/{id}', [RememberController::class, 'destroy'])->name('remembers.destroy');

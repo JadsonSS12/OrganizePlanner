@@ -13,6 +13,10 @@
                     <span class="bg-dark text-white p-2 rounded"> Noite (18–22)</span>
             </div>
 
+             <div>
+                <a class="btn btn-primary" href="{{route('atividades.create')}}">Criar atividade</a>
+            </div>
+
                 <div class="row">
                 {{-- Coluna das horas --}}
                 <div class="col-md-1 border-end">
@@ -33,9 +37,11 @@
                                 @endphp
 
                                 @if ($startHour === $h)
-                                    <span class="badge bg-primary me-1">
-                                        {{ $atividade->descricao }}
-                                    </span>
+                                    <li>
+                                        <a class="badge bg-primary me-1" href="{{ route('atividades.show', $atividade->id) }}">
+                                            {{ $atividade->nome }}
+                                        </a>
+                                    </li>
                                 @endif
                             @endforeach
                         </div>

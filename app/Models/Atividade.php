@@ -14,7 +14,7 @@ class Atividade extends Model
     public const STATUS_CANCELADA     = 'cancelada';
 
     protected $fillable = [
-        'descricao', 'status', 'data', 'category_id', 'user_id', 'hora_inicio', 'hora_fim',
+        'nome','descricao', 'status', 'data', 'category_id', 'user_id', 'hora_inicio', 'hora_fim',
     ];
 
     public function categoria(): BelongsTo{

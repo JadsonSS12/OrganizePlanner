@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn" href="#" aria-label="Acesse os alertas" style="color: white">
+                    <a class="nav-link btn" href="{{ route('remembers.index') }}" aria-label="Acesse os alertas" style="color: white">
                         Alertas
                     </a>
                 </li>
@@ -62,6 +62,7 @@
                             <a class="nav-link" style="color: white" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
+                    
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

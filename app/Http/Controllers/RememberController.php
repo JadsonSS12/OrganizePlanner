@@ -48,4 +48,17 @@ class RememberController extends Controller{
     
         return redirect()->route('remembers.index')->with('success', 'Lembrete criado com sucesso!');
     }
+
+    public function destroy($id)
+{
+    $remember = Remember::find($id);
+
+    if (!$remember) {
+        return response()->json(['success' => false, 'message' => 'Lembrete não encontrado.'], 404);
+    }
+
+    $remember->delete();
+
+    return response()->json(['success' => true, 'message' => 'Lembrete deletado com sucesso.']);
+}
 }

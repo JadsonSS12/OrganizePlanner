@@ -12,8 +12,8 @@ class Category extends Model
     private DateTime $prazo;
     private StatusGoal $statusGoal;
 
-    public function Tasks(){
-        return $this->hasMany(Task::class);
+    public function Atividade(){
+        return $this->hasMany(Atividade::class);
     }
 
     public function getPrazo(){
