@@ -34,7 +34,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link btn" href="#" aria-label="Acesse os relatórios" style="color: white">
+                    <a class="nav-link btn" href="{{ route('relatories.dashboard') }}" aria-label="Acesse os relatórios" style="color: white">
                         Relatórios
                     </a>
                 </li>
