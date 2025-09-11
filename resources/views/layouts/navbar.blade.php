@@ -9,20 +9,20 @@
     }
 
     .nav-item:hover {
-        background-color: aqua;
+        background-color: #5E81AC;
         border-color: none;
         color: white;
     }
 
     .nav-item.active-nav-item {
-        background-color: #e6b450;
+        background-color: #81A1C1;
         transition: all 0.3s ease;
-        color: #12583C; /* Cor do texto do item ativo */
+        color: #4C566A;
         border-radius: 15px;
     }
 </style>
 
-<nav class="navbar navbar-expand-lg" style="background-color: #171719">
+<nav class="navbar navbar-expand-lg" style="background-color: #2E3440">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}" style="list-style:none;">
             <img src="{{ asset('images/organizeMe.jpg') }}" alt="Logo OrganizeMe" style="height: 40px; width: auto;">
@@ -32,23 +32,25 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link btn" href="#" aria-label="Acesse os relatórios" style="color: white">
-                        Relatórios
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn" href="{{ route('remembers.index') }}" aria-label="Acesse os alertas" style="color: white">
-                        Alertas
-                    </a>
-                </li>
-                <li class="nav-item active-nav-item">
-                    <a class="nav-link btn" href="#" aria-label="Acesse a home">
-                        Home
-                    </a>
-                </li>
-            </ul>
+            @auth
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="#" aria-label="Acesse os relatórios" style="color: white">
+                            Relatórios
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="{{ route('remembers.index') }}" aria-label="Acesse os alertas" style="color: white">
+                            Alertas
+                        </a>
+                    </li>
+                    <li class="nav-item active-nav-item">
+                        <a class="nav-link btn" href="#" aria-label="Acesse a home">
+                            Home
+                        </a>
+                    </li>
+                </ul>
+            @endauth
             <ul class="navbar-nav ms-auto">
                 @guest
                     @if (Route::has('login'))
@@ -62,11 +64,11 @@
                             <a class="nav-link" style="color: white" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
-                    
+
                 @else
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->nome }}
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

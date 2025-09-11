@@ -12,13 +12,35 @@ use Carbon\Carbon;
 class AtividadeController extends Controller
 {
     public function index(){
-         $atividades = Atividade::all();
-            
-            // Busca os lembretes para a data de hoje
-            $lembretesProximos = Remember::whereDate('dateTime', Carbon::today())->get();
+        $dia_atual = Carbon::now();
 
-            // Passa tanto as atividades quanto os lembretes para a view
-            return view('atividades.index', compact('atividades', 'lembretesProximos'));
+        $domingo = $dia_atual->copy()->startOfWeek(Carbon::SUNDAY)->startOfDay();
+        $sabado = $dia_atual->copy()->endOfWeek(Carbon::SATURDAY)->endOfWeek();
+
+        $atividades = Atividade::whereBetween('data', [$domingo, $sabado])
+                        ->get();
+        $atividades_agrupadas =  $atividades->groupBy(fn($a) => (int) (
+            $a->data instanceof Carbon
+                ? $a->data->dayOfWeek
+                : Carbon::parse($a->data)->dayOfWeek
+        ))
+        ->mapWithKeys(function ($colDoDia, $dayKey) {
+            $hours = $colDoDia
+                ->groupBy(fn($a) => (int) (
+                    $a->hora_inicio instanceof Carbon
+                        ? (int) $a->hora_inicio->format('H')
+                        : (int) Carbon::parse($a->hora_inicio)->format('H')
+                ))
+                ->mapWithKeys(fn($items, $hourKey) => [(int) $hourKey => $items->values()])
+                ->sortKeys();
+
+            return [(int) $dayKey => $hours];
+        })
+        ->sortKeys();
+        // Busca os lembretes para a data de hoje
+        $lembretesProximos = Remember::whereDate('dateTime', Carbon::today())->get();
+
+        return view('atividades.index', compact('atividades_agrupadas', 'lembretesProximos'));
     }
     public function show($atividade_id){
         $atividade = Atividade::find($atividade_id);
@@ -69,7 +91,7 @@ class AtividadeController extends Controller
         }
 
         $atividade->delete();
-        return redirect()->route('atividade.index')->with("sucess", 'atividade deletada');
+        return redirect()->route('atividade.index')->with("success", 'atividade deletada');
     }
 
 }

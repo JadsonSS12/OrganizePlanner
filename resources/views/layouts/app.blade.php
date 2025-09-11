@@ -31,7 +31,7 @@
 
     {{-- @include('layouts.components.messages') --}}
 
-    <main class="flex-grow-1" style="color: white; background-color: #000">
+    <main class="flex-grow-1 py-4" style="color: white; background-color: #22272E">
 
         @yield('content')
 

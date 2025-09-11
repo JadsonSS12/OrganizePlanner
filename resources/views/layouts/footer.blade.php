@@ -1,14 +1,45 @@
-<footer class="d-flex justify-content-between align-items-baseline px-5">
-   <style>
-        .text-center{
-            text.align: center;
-        }
-    </style>
+<footer style="background-color: #2E3440">
+    <div class="container-xxl py-2">
+        <div class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-2 small">
+            <div class="d-flex align-items-center gap-3">
+                <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}" style="list-style:none;">
+                    <img src="{{ asset('images/organizeMe.jpg') }}" alt="Logo OrganizeMe"
+                        style="height: 40px; width: auto;">
+                </a>
+            </div>
 
-    <div class="text-center">
-        <a href="{{route('home')}}">
-            OrganizeMe
-        </a>
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link px-2 text-white" href="{{ route('home') }}">Home</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-white" href="">Relatórios</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-white" href="">Alertas</a></li>
+                <li class="nav-item"><a class="nav-link px-2 text-white"
+                        href="{{ route('atividades.index') }}">Agenda</a></li>
+            </ul>
+
+            <div class="d-flex align-items-center gap-2">
+                <span class="text-secondary">Equipe:</span>
+                <a class="link-secondary" href="https://github.com/ogustavobrandao" target="_blank"
+                    rel="noopener">Gustavo</a>
+                <span class="text-secondary">•</span>
+                <a class="link-secondary" href="https://github.com/JadsonSS12" target="_blank" rel="noopener">Jadson</a>
+                <span class="text-secondary">•</span>
+                <a class="link-secondary" href="https://github.com/VinniGomes7" target="_blank"
+                    rel="noopener">Vinicius</a>
+            </div>
+        </div>
+
+        <div
+            class="d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 mt-2 small text-secondary">
+            <div>
+                © {{ date('Y') }} Equipe OrganizeMe
+            </div>
+            <span class="text-secondary d-none d-md-inline">
+                Trabalho acadêmico • PLP • 2025.2
+            </span>
+            <div class="d-flex gap-3">
+                <a class="link-secondary" href="https://github.com/JadsonSS12/OrganizePlanner.git" target="_blank"
+                    rel="noopener">Repositório</a>
+            </div>
+        </div>
     </div>
-
 </footer>
