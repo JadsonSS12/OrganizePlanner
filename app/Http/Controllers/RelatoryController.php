@@ -73,6 +73,7 @@ class RelatoryController extends Controller
 
         // Categoria mais usada
         $categoriaTop = Atividade::select('category_id', DB::raw('count(*) as total'))
+            ->with('categoria')
             ->groupBy('category_id')
             ->orderByDesc('total')
             ->first();

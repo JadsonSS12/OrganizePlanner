@@ -18,7 +18,7 @@ class Atividade extends Model
     ];
 
     public function categoria(): BelongsTo{
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function user(): BelongsTo{
