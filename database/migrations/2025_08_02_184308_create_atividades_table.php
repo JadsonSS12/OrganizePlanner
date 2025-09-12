@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('descricao');
             $table->string('status');
             $table->date('data');
-            $table->time('hora_inicio')->nullable();
-            $table->time('hora_fim')->nullable()->after('hora_inicio');
+            $table->time('hora_inicio');
+            $table->time('hora_fim')->nullable();
             $table->foreignId('category_id')->constrained();
             $table->foreignId('user_id')->constrained();
 
