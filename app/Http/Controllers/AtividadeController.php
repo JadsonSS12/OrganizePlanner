@@ -11,8 +11,9 @@ use Carbon\Carbon;
 
 class AtividadeController extends Controller
 {
-    public function index(){
-        $dia_atual = Carbon::now();
+    public function index(Request $request){
+        $semanaOffset = (int) $request->query('week', 0); // 0 = atual, -1 = anterior, +1 = próxima
+        $dia_atual = Carbon::now()->addWeeks($semanaOffset);
 
         $domingo = $dia_atual->copy()->startOfWeek(Carbon::SUNDAY)->startOfDay();
         $sabado = $dia_atual->copy()->endOfWeek(Carbon::SATURDAY)->endOfWeek();
@@ -40,7 +41,7 @@ class AtividadeController extends Controller
         // Busca os lembretes para a data de hoje
         $lembretesProximos = Remember::whereDate('dateTime', Carbon::today())->get();
 
-        return view('atividades.index', compact('atividades_agrupadas', 'lembretesProximos'));
+        return view('atividades.index', compact('atividades_agrupadas', 'lembretesProximos', 'semanaOffset'));
     }
     public function show($atividade_id){
         $atividade = Atividade::find($atividade_id);
