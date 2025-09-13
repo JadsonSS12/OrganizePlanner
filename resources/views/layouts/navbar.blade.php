@@ -32,25 +32,23 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            @auth
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link btn" href="#" aria-label="Acesse os relatórios" style="color: white">
-                            Relatórios
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn" href="{{ route('remembers.index') }}" aria-label="Acesse os alertas" style="color: white">
-                            Alertas
-                        </a>
-                    </li>
-                    <li class="nav-item active-nav-item">
-                        <a class="nav-link btn" href="#" aria-label="Acesse a home">
-                            Home
-                        </a>
-                    </li>
-                </ul>
-            @endauth
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link btn" href="{{ route('relatories.dashboard') }}" aria-label="Acesse os relatórios" style="color: white">
+                        Relatórios
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn" href="{{ route('remembers.index') }}" aria-label="Acesse os alertas" style="color: white">
+                        Alertas
+                    </a>
+                </li>
+                <li class="nav-item active-nav-item">
+                    <a class="nav-link btn" href="#" aria-label="Acesse a home">
+                        Home
+                    </a>
+                </li>
+            </ul>
             <ul class="navbar-nav ms-auto">
                 @guest
                     @if (Route::has('login'))
