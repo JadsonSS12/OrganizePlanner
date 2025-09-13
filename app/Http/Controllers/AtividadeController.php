@@ -74,13 +74,13 @@ class AtividadeController extends Controller
             'descricao'=> $request->descricao,
             'status'=> $request->status,
             'data'=> $request->data,
-            'category_id'=>$request->data,
+            'category_id' => $request->category_id,
             'user_id' => Auth::id(),
             'hora_inicio'=>$request->hora_inicio,
             'hora_fim'=>$request->hora_fim,
 
         ]);
-        return redirect()->route('atividade.index')->with('success', 'Atividade atualizado com sucesso!');
+        return redirect()->route('atividades.index')->with('success', 'Atividade atualizada com sucesso!');
     }
 
     public function destroy($atividade_id){
