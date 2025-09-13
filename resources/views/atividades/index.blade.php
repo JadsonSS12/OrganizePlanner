@@ -10,11 +10,17 @@
             <a class="btn btn-primary" href="{{ route('atividades.create') }}">Criar atividade</a>
         </div>
         <div class="d-flex justify-content-center gap-4 text-sm py-4">
-            <button class="btn btn-primary me-5">Semana anterior</button>
+            <a class="btn btn-primary me-5" 
+                href="{{ route('atividades.index', ['week' => $semanaOffset - 1]) }}">
+                Semana anterior
+            </a>
             <span class="bg-info p-2 rounded"> Manhã (05–12)</span>
             <span class="bg-warning p-2 rounded">Tarde (13–17)</span>
             <span class="bg-dark text-white p-2 rounded"> Noite (18–22)</span>
-            <button class="btn btn-primary ms-5">Semana posterior</button>
+            <a class="btn btn-primary ms-5" 
+                href="{{ route('atividades.index', ['week' => $semanaOffset + 1]) }}">
+                Semana posterior
+            </a>
         </div>
 
 
