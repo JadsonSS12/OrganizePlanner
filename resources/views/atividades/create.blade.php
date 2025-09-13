@@ -14,7 +14,7 @@
                 <div class="card-body p-4">
                     <form action="{{ route('atividades.store') }}" method="POST">
                         @csrf
-                        <div class="mb-3">
+                         <div class="mb-3">
                             <label for="nome" class="form-label">Nome da Tarefa</label>
                             <input type="text"  class="form-control" id="nome" name="nome" required>
                         </div>

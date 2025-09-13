@@ -15,7 +15,10 @@ Route::resource('atividades', AtividadeController::class);
 Route::resource('goals', GoalController::class);
 Route::resource('remembers', RememberController::class);
 Route::resource('homes', RememberController::class);
-
-Route::apiResource('relatories', RelatoryController::class);
-Route::get('relatories-chart', [RelatoryController::class, 'chartData']);
 Route::delete('/remembers/{id}', [RememberController::class, 'destroy'])->name('remembers.destroy');
+
+Route::get('/relatories/dashboard', [RelatoryController::class, 'dashboard'])->name('relatories.dashboard');
+
+Route::get('/relatories/chart', [RelatoryController::class, 'chartData'])->name('relatories.chart');
+
+//Route::apiResource('relatories', RelatoryController::class);
