@@ -9,7 +9,7 @@ use App\Http\Controllers\RelatoryController;
 
 Auth::routes();
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\AtividadeController::class, 'index'])->name('home');
 
 Route::resource('atividades', AtividadeController::class);
 Route::resource('goals', GoalController::class);
