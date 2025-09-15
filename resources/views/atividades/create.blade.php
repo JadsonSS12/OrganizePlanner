@@ -7,8 +7,7 @@
             <div class="card shadow-lg rounded-4 border-0">
                 <div class="card-header bg-primary text-white rounded-top-4">
                     <h4 class="mb-0 p-2">
-                        <i class="bi bi-calendar-plus me-2"></i>
-                        Criar Planejamento
+                        Criar atividade
                     </h4>
                 </div>
                 <div class="card-body p-4">
@@ -65,9 +64,14 @@
                             </select>
                         </div>
 
-                        <div class="d-flex justify-content-end">
-                            <button type="submit" class="btn btn-success px-4" href="{{ route('atividades.index') }}">
-                                <i class="bi bi-check2-circle me-1" ></i> Salvar
+                        <div class="d-flex justify-content-end align-items-center gap-3">
+                            <div>
+                                <a class="btn btn-secondary btn-md px-4" href="{{ route('atividades.index') }}">
+                                    Voltar
+                                </a>
+                            </div>
+                            <button type="submit" class="btn btn-success btn-lg px-4" href="{{ route('atividades.index') }}">
+                                Salvar
                             </button>
                         </div>
                     </form>

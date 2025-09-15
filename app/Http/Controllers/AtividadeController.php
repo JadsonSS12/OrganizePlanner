@@ -8,6 +8,8 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use Carbon\CarbonInterval;
+use Carbon\CarbonPeriod;
 
 class AtividadeController extends Controller
 {
@@ -17,6 +19,8 @@ class AtividadeController extends Controller
 
         $domingo = $dia_atual->copy()->startOfWeek(Carbon::SUNDAY)->startOfDay();
         $sabado = $dia_atual->copy()->endOfWeek(Carbon::SATURDAY)->endOfWeek();
+
+        $datas_semana = CarbonPeriod::create($domingo,  '1 day', $sabado)->toArray();
 
         $atividades = Atividade::whereBetween('data', [$domingo, $sabado])
                         ->get();
@@ -41,7 +45,7 @@ class AtividadeController extends Controller
         // Busca os lembretes para a data de hoje
         $lembretesProximos = Remember::whereDate('dateTime', Carbon::today())->get();
 
-        return view('atividades.index', compact('atividades_agrupadas', 'lembretesProximos', 'semanaOffset'));
+        return view('atividades.index', compact('atividades_agrupadas', 'lembretesProximos', 'semanaOffset', 'datas_semana'));
     }
     public function show($atividade_id){
         $atividade = Atividade::find($atividade_id);
@@ -61,7 +65,10 @@ class AtividadeController extends Controller
     }
     public function edit($atividade_id){
         $atividade = Atividade::findOrFail($atividade_id);
-        return view('atividades.edit', compact('atividade'));
+
+        $categorias = Category::all();
+
+        return view('atividades.edit', compact('atividade', 'categorias'));
 
     }
     public function update(Request $request, $atividade_id){
