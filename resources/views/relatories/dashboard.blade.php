@@ -51,6 +51,60 @@
                 <p><strong>Mês mais produtivo:</strong> {{ $mesProdutivo }}</p>
             </div>
         </div>
+        <!-- Gráfico -->
+        <div class="card shadow-sm rounded-3">
+            <div class="card-body">
+                <h4 class="card-title">📈 Evolução de Relatórios</h4>
+                <canvas id="relatoriesChart" height="100"></canvas>
+            </div>
+        </div>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctx = document.getElementById('relatoriesChart').getContext('2d');
+
+            fetch("{{ route('relatories.chart') }}")
+                .then(response => response.json())
+                .then(data => {
+                    const labels = data.map(item => item.date);
+                    const values = data.map(item => item.total);
+
+                    new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Total por Dia',
+                                data: values,
+                                fill: true,
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                tension: 0.3
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: {
+                                    display: true,
+                                },
+                                tooltip: {
+                                    mode: 'index',
+                                    intersect: false,
+                                }
+                            },
+                            scales: {
+                                x: { title: { display: true, text: 'Data' }},
+                                y: { title: { display: true, text: 'Total' }}
+                            }
+                        }
+                    });
+                });
+        });
+        </script>
+    @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @endpush
 
     </div>
     @endsection
