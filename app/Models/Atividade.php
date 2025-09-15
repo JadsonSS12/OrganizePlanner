@@ -17,6 +17,10 @@ class Atividade extends Model
         'nome','descricao', 'status', 'data', 'category_id', 'user_id', 'hora_inicio', 'hora_fim',
     ];
 
+    protected $casts = [
+        'data'  =>  'date',
+    ];
+
     public function categoria(): BelongsTo{
         return $this->belongsTo(Category::class, 'category_id');
     }

@@ -19,12 +19,6 @@ class HomeController extends Controller
     public function index()
     {
         if (Auth::check()) {
-            $atividades = Atividade::all();
-             // Lógica para encontrar lembretes próximos
-            $lembretesProximos = Remember::whereDate('dateTime', Carbon::today())->get();
-
-            return view('home', compact('atividades', 'lembretesProximos'));
-            //return view('atividades.index', compact('atividades'));
         }
 
         return view('welcome');

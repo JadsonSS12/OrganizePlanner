@@ -10,14 +10,14 @@
             <a class="btn btn-primary" href="{{ route('atividades.create') }}">Criar atividade</a>
         </div>
         <div class="d-flex justify-content-center gap-4 text-sm py-4">
-            <a class="btn btn-primary me-5" 
+            <a class="btn btn-primary me-5"
                 href="{{ route('atividades.index', ['week' => $semanaOffset - 1]) }}">
                 Semana anterior
             </a>
             <span class="bg-info p-2 rounded"> Manhã (05–12)</span>
             <span class="bg-warning p-2 rounded">Tarde (13–17)</span>
             <span class="bg-dark text-white p-2 rounded"> Noite (18–22)</span>
-            <a class="btn btn-primary ms-5" 
+            <a class="btn btn-primary ms-5"
                 href="{{ route('atividades.index', ['week' => $semanaOffset + 1]) }}">
                 Semana posterior
             </a>
@@ -38,11 +38,11 @@
                     <div class="col border-end">
                         <div class="p-2 h-100 border-bottom" style="min-height:36px;">
                             @if ($h === -1)
-                                <div class="fw-semibold text-center">{{ $dias[$dayIndex] }}</div>
+                                <div class="fw-semibold text-center">{{ $dias[$dayIndex] . ' - '. $datas_semana[$dayIndex]->format('d/m') }}</div>
                             @else
                                 @foreach (data_get($atividades_agrupadas, "{$dayIndex}.{$h}", collect()) as $atividade)
                                     <a class="badge bg-primary text-truncate me-1 mb-1 d-inline-block"
-                                        href="{{ route('atividades.show', $atividade->id) }}" title="{{ $atividade->nome }}"
+                                        href="{{ route('atividades.edit', $atividade->id) }}" title="{{ $atividade->nome }}"
                                         style="max-width:100%;">
                                         {{ $atividade->nome }}
                                     </a>
