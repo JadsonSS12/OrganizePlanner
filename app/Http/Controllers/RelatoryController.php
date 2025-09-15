@@ -86,6 +86,34 @@ class RelatoryController extends Controller
         ];
         $turnoProdutivo = array_search(max($turnos), $turnos);
 
+        // Dia da semana mais produtivo
+        $diaProdutivo = Atividade::select(DB::raw("strftime('%w', data) as dia"), DB::raw('count(*) as total'))
+            ->where('status', Atividade::STATUS_CONCLUIDA)
+            ->groupBy('dia')
+            ->orderByDesc('total')
+            ->first();
+
+        $diasSemana = ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+        $diaProdutivoNome = $diaProdutivo ? $diasSemana[$diaProdutivo->dia] : 'Nenhum';
+
+        // Semana mais produtiva
+        $semanaProdutiva = Atividade::select(DB::raw("strftime('%W', data) as semana"), DB::raw('count(*) as total'))
+            ->where('status', Atividade::STATUS_CONCLUIDA)
+            ->groupBy('semana')
+            ->orderByDesc('total')
+            ->first();
+        $semanaProdutivaNome = $semanaProdutiva ? "Semana ".$semanaProdutiva->semana : 'Nenhuma';
+
+        // Mês mais produtivo
+        $mesProdutivo = Atividade::select(DB::raw("strftime('%m', data) as mes"), DB::raw('count(*) as total'))
+            ->where('status', Atividade::STATUS_CONCLUIDA)
+            ->groupBy('mes')
+            ->orderByDesc('total')
+            ->first();
+
+        $meses = [1=>'Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+        $mesProdutivoNome = $mesProdutivo ? $meses[(int)$mesProdutivo->mes] : 'Nenhum';
+
         return view('relatories.dashboard', [
             'totalGoals' => $totalGoals,
             'sucessoGoals' => $sucessoGoals,
@@ -102,6 +130,10 @@ class RelatoryController extends Controller
 
             'categoriaTop' => $categoriaTop,
             'turnoProdutivo' => $turnoProdutivo,
+
+            'diaProdutivo' => $diaProdutivoNome,
+            'semanaProdutiva' => $semanaProdutivaNome,
+            'mesProdutivo' => $mesProdutivoNome,
         ]);
     }
 }

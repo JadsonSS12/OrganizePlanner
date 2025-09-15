@@ -43,6 +43,9 @@
                 <h4 class="card-title">💡 Insights</h4>
                 <p><strong>Categoria mais usada:</strong>{{ $categoriaTop ? $categoriaTop->categoria->name : 'Nenhuma' }}
                 <p><strong>Turno mais produtivo:</strong> {{ ucfirst($turnoProdutivo) }}</p>
+                <p><strong>Dia mais produtivo:</strong> {{ $diaProdutivo }}</p>
+                <p><strong>Semana mais produtiva:</strong> {{ $semanaProdutiva }}</p>
+                <p><strong>Mês mais produtivo:</strong> {{ $mesProdutivo }}</p>
             </div>
         </div>
 
