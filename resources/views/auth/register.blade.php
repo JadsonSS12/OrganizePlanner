@@ -3,13 +3,13 @@
 @section('content')
 <div class="registration-container">
 
-    
+
     <div class="right-panel">
-        <h2 class="form-title">criar conta</h2>
+        <h2 class="form-title">Criar conta</h2>
         <p class="social-subtext">registre-se com seu email</p>
         <form method="POST" action="{{ route('register') }}" class="registration-form">
             @csrf
-            
+
              <div class="input-group">
                 <label for="nome" class="input-icon"><i class="fas fa-user"></i></label>
                 <input id="nome" type="text" class="form-input" name="nome" value="{{ old('nome') }}" required autocomplete="nome" autofocus placeholder="Nome">
@@ -28,16 +28,16 @@
              <div class="input-group">
                         <label for="password" class="input-icon"><i class="fas fa-lock"></i></label>
                         <input id="password-confirm" type="password" class="form-input" name="password_confirmation" required autocomplete="new-password" placeholder="Confirme a senha">
-                        
+
              </div>
-            
+
            <button type="submit" class="register-button">
                                     {{ __('Register') }}
                                 </button>
         </form>
     </div>
     <div class="left-panel">
-        <h2 class="welcome-text">Bem Vindo!</h2>
+        <h2 class="welcome-text">Bem-vindo!</h2>
         <p class="welcome-subtext">Para se manter conectado conosco<br>por favor logue com suas informações pessoais</p>
         <a class="login-button" href="{{route('login')}}">ENTRAR</a>
     </div>
@@ -99,7 +99,7 @@
         font-size: 2.5rem;
         font-weight: 700;
         margin-bottom: 1rem;
-        background: linear-gradient(90deg, #9b59b6, #e6b450); 
+        background: linear-gradient(90deg, #9b59b6, #e6b450);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -153,7 +153,7 @@
         width: 100%;
         padding: 15px;
         border: none;
-        background: linear-gradient(90deg, #9b59b6, #e6b450); 
+        background: linear-gradient(90deg, #9b59b6, #e6b450);
         color: white;
         font-weight: bold;
         text-transform: uppercase;
