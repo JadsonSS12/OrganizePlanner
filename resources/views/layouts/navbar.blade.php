@@ -25,7 +25,7 @@
 <nav class="navbar navbar-expand-lg" style="background-color: #2E3440">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}" style="list-style:none;">
-            <img src="{{ asset('images/organizeMe.jpg') }}" alt="Logo OrganizeMe" style="height: 40px; width: auto;">
+            <img src="{{ asset('images/organizeMe.png') }}" alt="Logo OrganizeMe" style="height: 40px; width: auto;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

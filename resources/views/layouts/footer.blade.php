@@ -1,7 +1,7 @@
 <footer class="d-flex flex-column flex-md-row align-items-center justify-content-around gap-2 small py-4" style="background-color: #2E3440">
     <div class="d-flex align-items-center gap-3">
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}" style="list-style:none;">
-            <img src="{{ asset('images/organizeMe.jpg') }}" alt="Logo OrganizeMe"
+            <img src="{{ asset('images/organizeMe.png') }}" alt="Logo OrganizeMe"
                 style="height: 40px; width: auto;">
         </a>
     </div>
