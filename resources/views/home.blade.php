@@ -55,6 +55,15 @@
     </style>
 
     <div class="container-fluid calendar-container">
+
+         @if(isset($remembers) && !$remembers->isEmpty())
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <strong>Atenção!</strong> Você possui lembretes pendentes.
+                <a href="{{ route('remembers.index') }}" class="alert-link">Clique aqui para vê-los</a>.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
         <div class="d-flex align-items-center justify-content-between my-4">
             <a href="#" class="btn btn-dark"><</a>
             <h2 class="calendar-header">Agosto</h2>
@@ -106,5 +115,6 @@
                 </div>
             @endforeach
         </div>
+        
     </div>
 @endsection

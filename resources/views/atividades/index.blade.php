@@ -4,6 +4,14 @@
 
     @php
         $dias = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+
+        $categoryColors = [
+            'Trabalho' => 'bg-primary',      // Azul
+            'Estudo' => 'bg-danger',      // Vermelho
+            'Pessoal' => 'bg-warning text-dark', // Amarelo
+            'Compras' => 'bg-info text-dark',        // Azul claro
+        ];
+    
     @endphp
     <div class="container">
         <div class="d-flex justify-content-end">
@@ -23,36 +31,43 @@
             </a>
         </div>
 
-
+        <div class="border rounded-3 overflow-hidden shadow-sm">
         @for ($h = -1; $h < 24; $h++)
-            <div class="row g-0 align-items-stretch {{ $h === -1 ? 'sticky-top bg-primary' : '' }}"
+            <div class="row g-0 align-items-stretch {{ $h === -1 ? 'sticky-top bg-dark text-white' : '' }}"
                 style="{{ $h === -1 ? 'z-index:1' : '' }}">
                 <div class="col-1 border-end">
-                    <div class="p-2 h-100 border-bottom {{ $h === -1 ? 'fw-semibold text-center' : 'small bg-primary d-flex justify-content-end align-items-center' }}"
+                    <div class="p-2 h-100 border-bottom {{ $h === -1 ? 'fw-semibold text-center' : 'small bg-dark d-flex justify-content-end align-items-center text-white' }}"
                         style="min-height:36px;">
                         {{ $h === -1 ? 'Hora' : sprintf('%02d:00', $h) }}
                     </div>
                 </div>
 
-                @foreach (range(0, 6) as $dayIndex)
-                    <div class="col border-end">
-                        <div class="p-2 h-100 border-bottom" style="min-height:36px;">
-                            @if ($h === -1)
-                                <div class="fw-semibold text-center">{{ $dias[$dayIndex] . ' - '. $datas_semana[$dayIndex]->format('d/m') }}</div>
-                            @else
-                                @foreach (data_get($atividades_agrupadas, "{$dayIndex}.{$h}", collect()) as $atividade)
-                                    <a class="badge bg-primary text-truncate me-1 mb-1 d-inline-block"
-                                        href="{{ route('atividades.edit', $atividade->id) }}" title="{{ $atividade->nome }}"
-                                        style="max-width:100%;">
-                                        {{ $atividade->nome }}
-                                    </a>
-                                @endforeach
-                            @endif
-                        </div>
-                    </div>
+@foreach (range(0, 6) as $dayIndex)
+    <div class="col {{ $loop->last ? '' : 'border-end' }}">
+        <div class="p-2 h-100 border-bottom" style="min-height:36px;">
+            @if ($h === -1)
+                <div class="fw-semibold text-center">{{ $dias[$dayIndex] . ' - '. $datas_semana[$dayIndex]->format('d/m') }}</div>
+            @else
+                @foreach (data_get($atividades_agrupadas, "{$dayIndex}.{$h}", collect()) as $atividade)
+                    @php
+                        $categoryName = data_get($atividade, 'categoria.name');
+
+                        $colorClass = $categoryColors[$categoryName] ?? 'bg-secondary';
+                    @endphp
+
+                    <a class="badge {{ $colorClass }} text-truncate me-1 mb-1 d-inline-block"
+                        href="{{ route('atividades.show', $atividade->id) }}" title="{{ $atividade->nome }} ({{ $categoryName }})"
+                        style="max-width:100%;">
+                        {{ $atividade->nome }}
+                    </a>
                 @endforeach
+            @endif
+        </div>
+    </div>
+@endforeach
             </div>
         @endfor
+        </div>
 
 
         <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;">

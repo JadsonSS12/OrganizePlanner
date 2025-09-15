@@ -22,7 +22,7 @@
     }
 </style>
 
-<nav class="navbar navbar-expand-lg" style="background-color: #2E3440">
+<nav class="navbar navbar-expand-lg" style="background-color: #171719">
     <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}" style="list-style:none;">
             <img src="{{ asset('images/organizeMe.png') }}" alt="Logo OrganizeMe" style="height: 40px; width: auto;">

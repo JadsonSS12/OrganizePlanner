@@ -7,7 +7,6 @@ use App\Models\Remember;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-
 class HomeController extends Controller
 {
 
@@ -16,11 +15,17 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+     public function index()
     {
-        if (Auth::check()) {
-        }
+        $remembers = Remember::all();
 
-        return view('welcome');
+        // Mantenha a sua lógica existente para carregar as atividades
+        // Exemplo: $atividades = Atividade::all();
+
+        // Retorna a view, passando tanto os lembretes quanto as atividades
+        return view('home', [
+            'remembers' => $remembers,
+        ]);
+    
     }
 }

@@ -22,7 +22,7 @@
 
 </head>
 
-<body class="d-flex flex-column min-vh-100" style="color: #fff">
+<body class="d-flex flex-column min-vh-100" style="background-color: #0d0d0d">
 
 
     <header>
@@ -31,13 +31,9 @@
 
     {{-- @include('layouts.components.messages') --}}
 
-    <main class="flex-grow-1 py-4" style="color: white; background-color: #22272E">
-
+    <main class="flex-grow-1">
         @yield('content')
-
     </main>
-
-    @stack('modais')
 
     <footer>
         @include('layouts.footer')

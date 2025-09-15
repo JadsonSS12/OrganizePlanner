@@ -104,7 +104,7 @@ class AtividadeController extends Controller
         }
 
         $atividade->delete();
-        return redirect()->route('atividade.index')->with("success", 'atividade deletada');
+        return redirect()->route('atividades.index')->with("success", 'atividade deletada');
     }
 
 }

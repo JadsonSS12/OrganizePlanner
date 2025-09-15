@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="registration-container">
+<div class="page-container">
+    <div class="registration-container">
 
 
     <div class="right-panel">
@@ -15,15 +16,15 @@
                 <input id="nome" type="text" class="form-input" name="nome" value="{{ old('nome') }}" required autocomplete="nome" autofocus placeholder="Nome">
             </div>
 
-            <div class="input-group">
-                <label for="email" class="input-icon"><i class="fas fa-envelope"></i></label>
-                <input id="email" type="email" class="form-input" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
-            </div>
+                <div class="input-group">
+                    <label for="email" class="input-icon"><i class="fas fa-envelope"></i></label>
+                    <input id="email" type="email" class="form-input" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email">
+                </div>
 
-            <div class="input-group">
-                <label for="password" class="input-icon"><i class="fas fa-lock"></i></label>
-                <input id="password" type="password" class="form-input" name="password" required autocomplete="new-password" placeholder="Senha">
-            </div>
+                <div class="input-group">
+                    <label for="password" class="input-icon"><i class="fas fa-lock"></i></label>
+                    <input id="password" type="password" class="form-input" name="password" required autocomplete="new-password" placeholder="Senha">
+                </div>
 
              <div class="input-group">
                         <label for="password" class="input-icon"><i class="fas fa-lock"></i></label>
@@ -44,19 +45,26 @@
 </div>
 
 <style>
-    /* Aqui é onde você adicionaria o CSS para replicar a imagem */
+
+    .page-container {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        min-height: 90vh;    
+    }
+
     .registration-container {
         display: flex;
-        background-color: #000;
+        background-color: #070707;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         overflow: hidden;
         max-width: 900px;
-        margin: 50px auto;
+        width: 100%;
     }
     .left-panel {
         background: linear-gradient(135deg, #6c3483, #9b59b6);
-        background-image: url('{{ asset("images/montanha2.jpg") }}');
+        background-image: url('{{ asset("images/monta.jpg") }}');
         background-size: cover;
         background-position: bottom;
         background-repeat: no-repeat;

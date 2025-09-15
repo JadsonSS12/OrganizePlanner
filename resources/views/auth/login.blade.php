@@ -8,13 +8,10 @@
     }
 
     .login-container {
-        display: flex;
-        background-color: #000;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        overflow: hidden;
-        max-width: 900px;
-        margin: 50px auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+        align-items: center;
     }
 
     .login-left-side {
@@ -23,22 +20,15 @@
         justify-content: center;
         align-items: center;
         padding: 2rem;
+        text-align: center;
     }
 
-    .left-panel {
-        background: linear-gradient(135deg, #6c3483, #9b59b6);
-        background-image: url('{{ asset("images/montanha2.jpg") }}');
+    .login-right-side {
+        background-image: url('{{ asset("images/deserto.jpg") }}');
         background-size: cover;
-        background-position: bottom;
-        background-repeat: no-repeat;
-        color: white;
-        padding: 60px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        flex: 1;
+        background-position: center;
+        min-height: 100vh;
+        
     }
 
     .login-form-card {
@@ -52,7 +42,7 @@
         font-size: 2.5rem;
         font-weight: 700;
         margin-bottom: 2rem;
-        background: linear-gradient(90deg, #9b59b6, #e6b450);
+        background: linear-gradient(90deg, #9b59b6, #e6b450); 
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -68,7 +58,7 @@
     }
 
     .form-control:focus {
-        background-color: #171719;
+        background-color: #0d0d0d;
         border-color: #9b59b6;
         box-shadow: 0 0 0 0.25rem rgba(155, 89, 182, 0.25);
     }
@@ -132,7 +122,7 @@
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
-
+    
     .btn-login {
         width: 100%;
         background: linear-gradient(90deg, #9b59b6, #e6b450);
@@ -143,29 +133,25 @@
         border-radius: 8px;
     }
 
-    .register-button {
-        margin-top: 20px;
-        padding: 10px 40px;
-        border: 2px solid white;
-        background: transparent;
-        color: white;
-        border-radius: 20px;
-        cursor: pointer;
-        font-weight: bold;
+    .btn-link {
+        color: #fff;
+        text-decoration: underline;
     }
-
-
+    
+    .btn-link:hover {
+        color: #e6b450;
+    }
 </style>
 
 <div class="login-container">
     <div class="login-left-side">
-        <div class="login-form-card p-4">
+        <div class="login-form-card">
             <h1 class="login-title">Faça seu Login</h1>
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
                 <div class="mb-3">
-                    <label for="email" class="form-label">{{ __('E-mail') }}</label>
+                    <label for="email" class="form-label">{{ __('Email Address') }}</label>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
                     @error('email')
                         <span class="invalid-feedback" role="alert">
@@ -175,7 +161,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="password" class="form-label">{{ __('Senha') }}</label>
+                    <label for="password" class="form-label">{{ __('Password') }}</label>
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Senha">
                     @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -200,14 +186,12 @@
 
                 <div class="d-grid gap-2">
                     <button class="btn btn-login glow-on-hover" type="submit">Login</button>
+                    <a class="btn btn-link" href="{{ route('register') }}">
+                        Ainda não tem uma conta? Cadastre-se!
+                    </a>
                 </div>
             </form>
         </div>
-    </div>
-    <div class="left-panel">
-        <h2 class="welcome-text">Bem-vindo!</h2>
-        <p class="welcome-subtext"> Ainda não tem uma conta?</p>
-        <a class="register-button" href="{{route('register')}}">Cadastre-se</a>
     </div>
     <div class="login-right-side d-none d-lg-block"></div>
 </div>
