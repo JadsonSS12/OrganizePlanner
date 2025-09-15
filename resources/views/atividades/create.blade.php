@@ -70,7 +70,7 @@
                                     Voltar
                                 </a>
                             </div>
-                            <button type="submit" class="btn btn-success btn-lg px-4" href="{{ route('atividades.index') }}">
+                            <button type="submit" class="btn btn-success btn-lg px-4">
                                 Salvar
                             </button>
                         </div>
