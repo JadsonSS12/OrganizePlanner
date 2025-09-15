@@ -42,16 +42,6 @@ class RelatoryController extends Controller
         return response()->json(null, 204);
     }
 
-    // Método específico para gráficos
-    public function chartData()
-    {
-        $data = Relatory::selectRaw('DATE(data_inicio) as date, SUM(valor_total) as total')
-            ->groupBy('date')
-            ->orderBy('date')
-            ->get();
-
-        return response()->json($data);
-    }
     public function dashboard()
     {
         // ---- Metas ----
@@ -77,6 +67,12 @@ class RelatoryController extends Controller
             ->groupBy('category_id')
             ->orderByDesc('total')
             ->first();
+        
+        $categoriaGoalTop = Goal::select('category_id', DB::raw('count(*) as total'))
+        ->with('category')
+        ->groupBy('category_id')
+        ->orderByDesc('total')
+        ->first();
 
         // Turno mais produtivo
         $turnos = [
@@ -120,6 +116,7 @@ class RelatoryController extends Controller
             'semSucessoGoals' => $semSucessoGoals,
             'parcialGoals' => $parcialGoals,
             'percentSucesso' => $percentSucesso,
+            'categoriaGoalTop' => $categoriaGoalTop,
 
             'totalAtividades' => $totalAtividades,
             'pendentes' => $pendentes,
