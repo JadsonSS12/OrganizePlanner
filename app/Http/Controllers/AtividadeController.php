@@ -51,7 +51,7 @@ class AtividadeController extends Controller
 
         return view('welcome');
     }
-    
+
     public function show($atividade_id){
         $atividade = Atividade::find($atividade_id);
 
@@ -64,6 +64,20 @@ class AtividadeController extends Controller
         return view('atividades.create', compact('categorias'));
     }
     public function store(Request $request){
+
+        if($request->tipo_bloco === 'turno'){
+            if($request->turno === 'manha'){
+                $horario_inicio = '06:00:00';
+            }else if($request->turno === 'tarde'){
+                $horario_inicio = '12:00:01';
+            }else if($request->turno === 'noite'){
+                $horario_inicio = '18:00:01';
+            }
+            $request->merge([
+                'hora_inicio'   => $horario_inicio,
+            ]);
+        }
+
         Atividade::create(array_merge($request->all(), ['status' => 'pendente', 'user_id' => Auth::user()->id]));
 
         return redirect()->route('atividades.index')->with('success', 'Atividade criada com sucesso!');
