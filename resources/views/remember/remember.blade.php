@@ -3,8 +3,8 @@
 @section('content')
 <div class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="h2">Lista de Lembretes</h1>
-        <a href="{{ route('remembers.create') }}" class="btn btn-primary">Novo Lembrete</a>
+        <h1 class="h2 text-white">Lista de Lembretes</h1>
+        <a href="{{ route('remembers.create') }}" class="btn btn-secondary">Novo Lembrete</a>
     </div>
 
     {{-- Cabeçalho das colunas --}}

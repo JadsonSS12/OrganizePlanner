@@ -15,6 +15,7 @@ class AtividadeController extends Controller
 {
     public function index(Request $request){
         if (Auth::check()) {
+            
             $semanaOffset = (int) $request->query('week', 0); // 0 = atual, -1 = anterior, +1 = próxima
             $dia_atual = Carbon::now()->addWeeks($semanaOffset);
 
@@ -43,7 +44,7 @@ class AtividadeController extends Controller
                 return [(int) $dayKey => $hours];
             })
             ->sortKeys();
-            // Busca os lembretes para a data de hoje
+            // busca os lembretes pra data de hoje
             $lembretesProximos = Remember::whereDate('dateTime', Carbon::today())->get();
 
             return view('atividades.index', compact('atividades_agrupadas', 'lembretesProximos', 'semanaOffset', 'datas_semana'));
@@ -82,6 +83,9 @@ class AtividadeController extends Controller
 
         return redirect()->route('atividades.index')->with('success', 'Atividade criada com sucesso!');
     }
+
+    
+
     public function edit($atividade_id){
         $atividade = Atividade::findOrFail($atividade_id);
 

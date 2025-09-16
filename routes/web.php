@@ -20,3 +20,4 @@ Route::delete('/remembers/{id}', [RememberController::class, 'destroy'])->name('
 Route::get('/relatories/dashboard', [RelatoryController::class, 'dashboard'])->name('relatories.dashboard');
 
 Route::get('/relatories/chart', [RelatoryController::class, 'chartData'])->name('relatories.chart');
+Route::get('/relatories/goals-status-chart', [RelatoryController::class, 'goalStatusChartData'])->name('relatories.goals_status_chart');

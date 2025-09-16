@@ -44,24 +44,34 @@ class RelatoryController extends Controller
 
    public function chartData()
 {
-    //Modelo Atividade
     $data = Atividade::query()
-        // 1. Filtra apenas as atividades que foram concluídas
-        ->where('status', 'concluida') // ou Atividade::STATUS_CONCLUIDA se você usar constantes
+        ->where('status', 'concluida') 
 
-        // 2. Seleciona a data e CONTA a quantidade de registros por dia
+        
         ->selectRaw('DATE(data) as date, COUNT(*) as total')
 
-        // 3. Agrupa os resultados pela data para que a contagem funcione por dia
         ->groupBy('date')
 
-        // 4. Ordena pela data para o gráfico de linha ficar cronológico
         ->orderBy('date')
         
         ->get();
 
     return response()->json($data);
 }
+
+ public function goalStatusChartData()
+    {
+        $sucessoGoals = Goal::where('status', 'Sucesso')->count();
+        $semSucessoGoals = Goal::where('status', 'SemSucesso')->count();
+        $parcialGoals = Goal::where('status', 'ParcialmenteAtingida')->count();
+
+        $data = [
+            'labels' => ['Sucesso', 'Sem Sucesso', 'Parcialmente Atingida'],
+            'data' => [$sucessoGoals, $semSucessoGoals, $parcialGoals],
+        ];
+
+        return response()->json($data);
+    }
 
     public function dashboard()
     {

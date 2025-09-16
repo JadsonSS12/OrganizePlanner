@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5">
+<div class="container mt-5" >
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card shadow-lg rounded-4 border-0">
-                <div class="card-header bg-primary text-white rounded-top-4">
-                    <h4 class="mb-0 p-2">
+            <div class="card shadow-lg rounded-4 border-0"  style="background-image: linear-gradient(rgba(0, 0, 5, 0.8), rgba(0, 0, 0, 0.8)),url('{{ asset('images/b.jpg') }}'); background-size: cover; background-position: center;">
+                <div class="card-header bg-black text-white rounded-top-4">
+                    <h4 class="mb-0 p-2 text-center">
                         Criar atividade
                     </h4>
                 </div>
@@ -14,17 +14,17 @@
                     <form action="{{ route('atividades.store') }}" method="POST">
                         @csrf
                          <div class="mb-3">
-                            <label for="nome" class="form-label">Nome da Tarefa</label>
+                            <label for="nome" class="form-label text-white">Nome da Tarefa</label>
                             <input type="text"  class="form-control" id="nome" name="nome" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="descricao" class="form-label">Descrição da Tarefa</label>
+                            <label for="descricao" class="form-label text-white">Descrição da Tarefa</label>
                             <input type="text"  class="form-control" id="descricao" name="descricao"  placeholder="Descreva sua tarefa..." required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="descricao" class="form-label">Categoria</label>
+                            <label for="descricao" class="form-label text-white">Categoria</label>
                             <select class="form-control" name="category_id" id="category_id">
                                 <option value="" selected disabled>Selecione a categoria</option>
                                 @foreach ($categorias as $categoria)
@@ -35,12 +35,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="data" class="form-label">Data</label>
+                            <label for="data" class="form-label text-white">Data</label>
                             <input type="date" class="form-control" id="data" name="data" required>
                         </div>
 
                         <div class="mb-3">
-                            <label for="tipo_bloco" class="form-label">Tipo de Bloco</label>
+                            <label for="tipo_bloco" class="form-label text-white">Tipo de Bloco</label>
                             <select class="form-select" id="tipo_bloco" name="tipo_bloco" required onchange="toggleHorarioField()">
                                 <option value="">Selecione...</option>
                                 <option value="30_min">30 minutos</option>
@@ -49,12 +49,12 @@
                             </select>
                         </div>
 
-                        <div class="mb-3" id="horario_field" style="display: none;">
+                        <div class="mb-3 text-white" id="horario_field" style="display: none;">
                             <label for="horario" class="form-label">Horário</label>
                             <input type="time" class="form-control" id="hora_inicio" name="hora_inicio">
                         </div>
 
-                        <div class="mb-3" id="turno_field" style="display: none;">
+                        <div class="mb-3 text-white" id="turno_field" style="display: none;">
                             <label for="turno" class="form-label">Turno</label>
                             <select class="form-select" name="turno">
                                 <option value="">Selecione...</option>

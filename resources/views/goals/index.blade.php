@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container py-4">
     <div class="row mb-3">
-        <div class="col-md-6">
+        <div class="col-md-6 text-white">
             <h1>🎯 Minhas Metas</h1>
         </div>
         <div class="col-md-6 text-md-end">
-            <a href="{{ route('goals.create') }}" class="btn btn-primary">
+            <a href="{{ route('goals.create') }}" class="btn btn-secondary">
                 <i class="fas fa-plus"></i> Criar Nova Meta
             </a>
         </div>
