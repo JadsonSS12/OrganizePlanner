@@ -45,7 +45,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('atividades.index') }}">
+                        <a class="nav-link" href="{{ route('atividades.index') }}" aria-label="Acesse as metas" style="color: white">
                             Agenda
                         </a>
                     </li>
