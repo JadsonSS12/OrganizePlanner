@@ -33,11 +33,25 @@ class AtividadeController extends Controller
             ))
             ->mapWithKeys(function ($colDoDia, $dayKey) {
                 $hours = $colDoDia
-                    ->groupBy(fn($a) => (int) (
-                        $a->hora_inicio instanceof Carbon
-                            ? (int) $a->hora_inicio->format('H')
-                            : (int) Carbon::parse($a->hora_inicio)->format('H')
-                    ))
+                ->groupBy(function ($atividade) {
+                    // Converte a hora de início para um objeto Carbon
+                    $horaInicio = Carbon::parse($atividade->hora_inicio);
+
+                    // Calcula o total de minutos desde o início do dia (00:00)
+                    $totalMinutos = $horaInicio->hour * 60 + $horaInicio->minute;
+
+                    // Calcula o total de minutos desde o início da grade da agenda (06:00)
+                    $minutosDesdeSeis = $totalMinutos - (6 * 60);
+
+                    // Se a atividade for antes das 06:00, não a exibe na grade principal
+                    if ($minutosDesdeSeis < 0) {
+                        return -1; // Retorna um grupo que não será renderizado
+                    }
+                    
+                    // Calcula o índice do bloco de 30 minutos (0 para 06:00, 1 para 06:30, etc.)
+                    return floor($minutosDesdeSeis / 30);
+                })
+                ->filter(fn($v, $k) => $k >= 0)
                     ->mapWithKeys(fn($items, $hourKey) => [(int) $hourKey => $items->values()])
                     ->sortKeys();
 

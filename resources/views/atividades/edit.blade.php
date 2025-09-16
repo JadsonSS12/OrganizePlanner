@@ -4,9 +4,9 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card shadow-lg rounded-4 border-0">
-                <div class="card-header bg-primary text-white rounded-top-4">
-                    <h4 class="mb-0 p-2">
+            <div class="card shadow-lg bg-dark text-white rounded-4 border-0">
+                <div class="card-header bg-black text-white rounded-top-4">
+                    <h4 class="mb-0 p-2 text-center">
                         Editar atividade
                     </h4>
                 </div>

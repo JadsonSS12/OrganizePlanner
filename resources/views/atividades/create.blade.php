@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mt-5" >
+<div class="container mt-5 " >
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card shadow-lg rounded-4 border-0"  style="background-image: linear-gradient(rgba(0, 0, 5, 0.8), rgba(0, 0, 0, 0.8)),url('{{ asset('images/b.jpg') }}'); background-size: cover; background-position: center;">
+            <div class="card shadow-lg rounded-4 border-0 bg-dark" >
                 <div class="card-header bg-black text-white rounded-top-4">
                     <h4 class="mb-0 p-2 text-center">
                         Criar atividade
