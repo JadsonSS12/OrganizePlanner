@@ -11,7 +11,7 @@
             'Pessoal' => 'bg-warning text-dark', // Amarelo
             'Compras' => 'bg-info text-dark',        // Azul claro
         ];
-    
+
     @endphp
     <div class="container">
         <div class="d-flex justify-content-end">
@@ -22,9 +22,9 @@
                 href="{{ route('atividades.index', ['week' => $semanaOffset - 1]) }}">
                 Semana anterior
             </a>
-            <span class="bg-info p-2 rounded"> Manhã (05–12)</span>
+            <span class="bg-info p-2 rounded"> Manhã (06–12)</span>
             <span class="bg-warning p-2 rounded">Tarde (13–17)</span>
-            <span class="bg-dark text-white p-2 rounded"> Noite (18–22)</span>
+            <span class="bg-dark text-white p-2 rounded"> Noite (18–23)</span>
             <a class="btn btn-primary ms-5"
                 href="{{ route('atividades.index', ['week' => $semanaOffset + 1]) }}">
                 Semana posterior
@@ -32,13 +32,13 @@
         </div>
 
         <div class="border rounded-3 overflow-hidden shadow-sm">
-        @for ($h = -1; $h < 24; $h++)
+        @for ($h = -1; $h < 37; $h++)
             <div class="row g-0 align-items-stretch {{ $h === -1 ? 'sticky-top bg-dark text-white' : '' }}"
                 style="{{ $h === -1 ? 'z-index:1' : '' }}">
                 <div class="col-1 border-end">
                     <div class="p-2 h-100 border-bottom {{ $h === -1 ? 'fw-semibold text-center' : 'small bg-dark d-flex justify-content-end align-items-center text-white' }}"
                         style="min-height:36px;">
-                        {{ $h === -1 ? 'Hora' : sprintf('%02d:00', $h) }}
+                        {{ $h === -1 ? 'Hora' :  \Carbon\Carbon::createFromTime(6, 0)->addMinutes($h * 30)->format('H:i') }}
                     </div>
                 </div>
 
