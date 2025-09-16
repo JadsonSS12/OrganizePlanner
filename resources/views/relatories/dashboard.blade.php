@@ -74,7 +74,7 @@
                         data: {
                             labels: labels,
                             datasets: [{
-                                label: 'Total por Dia',
+                                label: 'Tarefas concluídas por Dia',
                                 data: values,
                                 fill: true,
                                 borderColor: 'rgba(75, 192, 192, 1)',

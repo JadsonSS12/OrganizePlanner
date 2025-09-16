@@ -42,16 +42,27 @@ class RelatoryController extends Controller
         return response()->json(null, 204);
     }
 
-    public function chartData()
-    {
-        $data = Relatory::selectRaw('DATE(data_inicio) as date, SUM(valor_total) as total')
-            ->groupBy('date')
-            ->orderBy('date')
-            ->get();
+   public function chartData()
+{
+    //Modelo Atividade
+    $data = Atividade::query()
+        // 1. Filtra apenas as atividades que foram concluídas
+        ->where('status', 'concluida') // ou Atividade::STATUS_CONCLUIDA se você usar constantes
 
-        return response()->json($data);
-    }
-    
+        // 2. Seleciona a data e CONTA a quantidade de registros por dia
+        ->selectRaw('DATE(data) as date, COUNT(*) as total')
+
+        // 3. Agrupa os resultados pela data para que a contagem funcione por dia
+        ->groupBy('date')
+
+        // 4. Ordena pela data para o gráfico de linha ficar cronológico
+        ->orderBy('date')
+        
+        ->get();
+
+    return response()->json($data);
+}
+
     public function dashboard()
     {
         // ---- Metas ----
