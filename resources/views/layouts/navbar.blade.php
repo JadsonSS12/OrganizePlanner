@@ -49,6 +49,11 @@
                             Agenda
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="{{ route('goals.index') }}" aria-label="Acesse as metas" style="color: white">
+                            Metas
+                        </a>
+                    </li>
                 </ul>
             @endauth
             <ul class="navbar-nav ms-auto">

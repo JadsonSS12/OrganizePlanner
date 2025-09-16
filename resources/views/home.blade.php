@@ -63,6 +63,17 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+ 
+        <div class="d-flex justify-content-end mb-4">
+            <div class="btn-group" role="group" aria-label="Ações Principais">
+                <a href="{{ route('atividades.create') }}" class="btn btn-info">
+                    <i class="fas fa-plus"></i> Nova Atividade
+                </a>
+                <a href="{{ route('goals.create') }}" class="btn btn-primary">
+                    <i class="fas fa-bullseye"></i> Criar Nova Meta
+                </a>
+            </div>
+        </div>
 
         <div class="d-flex align-items-center justify-content-between my-4">
             <a href="#" class="btn btn-dark"><</a>
